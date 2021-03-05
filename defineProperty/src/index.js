@@ -1,6 +1,6 @@
 
 import defineReactive from './defineReactive'
-// import Observer from './Observer'
+import Watcher from './Watcher'
 import observe from './observe'
 var obj = {
     a: {
@@ -8,11 +8,14 @@ var obj = {
             n: 5
         }
     },
-    b: 10
+    b: 10,
+    c: [33, 44, 55]
 }
 
 observe(obj)
-obj.b++
+new Watcher(obj, 'a.m.n', (val) => {
+    console.log('&&&', val)
+})
 
-obj.a.m.n = 6
+obj.a.m.n = 99
 

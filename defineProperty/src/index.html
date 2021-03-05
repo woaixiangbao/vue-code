@@ -7,5 +7,21 @@
 </head>
 <body>
     <div id="root">abc</div>
+    <script>
+        const str = 'a.b.c.d'
+        function parsePath(str) {
+            const segments = str.split('.')
+            console.log(segments)
+            return (obj => {
+                for(let i = 0; i < segments.length; i++) {
+                    if (!obj) return;
+                    obj = obj[segments[i]]
+                }
+                return obj
+            })
+        }
+        let fn = parsePath(str)
+        console.log(fn(), 999)
+    </script>
 </body>
 </html>
